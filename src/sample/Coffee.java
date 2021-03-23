@@ -1,4 +1,5 @@
 package sample;
 
-public class Coffee {
+public class Coffee extends MenuItem{
+
 }
