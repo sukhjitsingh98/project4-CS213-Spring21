@@ -2,7 +2,6 @@ package sample;
 
 public class Coffee extends MenuItem implements Customizable{
     private String coffeeType;
-    private double coffeePrice;
 
     /*Notes / Brainstorm
         Maybe create a Count variable to store number of addins and multiply by 0.2 and add to total price
@@ -11,7 +10,7 @@ public class Coffee extends MenuItem implements Customizable{
 
     public Coffee(String coffeeType){
         this.coffeeType = coffeeType;
-        coffeePrice = itemPrice();
+        super.setItemPrice(itemPrice());
     }
 
     //Maybe used to add addins
@@ -46,5 +45,9 @@ public class Coffee extends MenuItem implements Customizable{
             return Constants.VENTI_BLACK_COFFEE;
         }
         else return 0;
+    }
+
+    public double getCoffeePrice(){
+        return super.getItemPrice();
     }
 }

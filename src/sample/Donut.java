@@ -3,11 +3,11 @@ package sample;
 //This class is not listed in the project description but might be needed since its use is mentioned
 public class Donut extends MenuItem implements Customizable{
     private String donutType;
-    private double donutPrice; //Maybe Calculate with itemPrice() method?
 
+    //Maybe include flavors as well
     public Donut(String donutType){
         this.donutType = donutType;
-        donutPrice = itemPrice();
+        super.setItemPrice(itemPrice());
     }
 
     //Not sure how this will be used
@@ -34,6 +34,6 @@ public class Donut extends MenuItem implements Customizable{
     }
 
     public double getDonutPrice(){
-        return donutPrice;
+        return super.getItemPrice();
     }
 }
