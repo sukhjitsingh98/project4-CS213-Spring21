@@ -8,7 +8,8 @@ public class Coffee extends MenuItem implements Customizable{
         OR store each addin as a boolean and do a total price calculation based on that info
      */
 
-    public Coffee(String coffeeType){
+    public Coffee(String coffeeType, int coffeeQuantity){
+        super(coffeeQuantity);
         this.coffeeType = coffeeType;
         super.setItemPrice(itemPrice());
     }

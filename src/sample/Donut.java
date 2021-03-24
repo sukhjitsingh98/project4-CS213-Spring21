@@ -5,7 +5,8 @@ public class Donut extends MenuItem implements Customizable{
     private String donutType;
 
     //Maybe include flavors as well
-    public Donut(String donutType){
+    public Donut(String donutType, int donutQuantity){
+        super(donutQuantity);
         this.donutType = donutType;
         super.setItemPrice(itemPrice());
     }
