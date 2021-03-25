@@ -19,5 +19,14 @@
          </children>
       </HBox>
 
+      <ComboBox fx:id="donutCombo" layoutX="14.0" layoutY="33.0" prefHeight="25.0" prefWidth="123.0" promptText="Donut Type">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Yeast Donuts" />
+               <String fx:value="Cake Donuts" />
+               <String fx:value="Donut Holes" />
+            </FXCollections>
+         </items>
+      </ComboBox>
    </children>
 </AnchorPane>
