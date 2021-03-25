@@ -3,12 +3,9 @@ package sample;
 import java.util.ArrayList;
 
 public class Coffee extends MenuItem implements Customizable{
+
     private String coffeeType;
     private ArrayList<String> addInsList = new ArrayList<String>();
-    /*Notes / Brainstorm
-        Maybe create a Count variable to store number of addins and multiply by 0.2 and add to total price
-        OR store each addin as a boolean and do a total price calculation based on that info
-     */
 
     public Coffee(String coffeeType, int coffeeQuantity){
         super(coffeeQuantity);
@@ -25,6 +22,7 @@ public class Coffee extends MenuItem implements Customizable{
             //Check if the add in is valid
             if(isValidAddIn(addIn)){
                 addInsList.add(addIn);
+                super.setItemPrice((itemPrice()));
                 return true;
             }
         }
@@ -36,13 +34,10 @@ public class Coffee extends MenuItem implements Customizable{
         return false;
     }
 
-    //Sum of basic coffee plus add ons
+    //Sum of basic coffee plus add ins. Include tax?
     public double itemPrice(){
-        double sum = coffeeSizePrice();
-
-        //This is brainstorming and could be implemented some other way
-        //sum += Constants.COFFEE_ADD_IN
-        return 0;
+        double sum = coffeeSizePrice() + Constants.COFFEE_ADD_IN * addInsList.size();
+        return sum;
     }
 
     private double coffeeSizePrice(){
