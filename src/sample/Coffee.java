@@ -13,7 +13,7 @@ public class Coffee extends MenuItem implements Customizable{
         super.setItemPrice(itemPrice());
     }
 
-    //Used to add add ins into an array
+    //Used to add an add in into the arrayList. Assume only one of each type of add in is allowed.
     public boolean add(Object obj){
         if(obj instanceof String){
             //Cast object into string
@@ -29,14 +29,25 @@ public class Coffee extends MenuItem implements Customizable{
         return false;
     }
 
-    //Used to remove addins
+    //Used to remove an add in from the arrayList. Assume only one of each type of add in is allowed.
     public boolean remove(Object obj){
+        if(obj instanceof String){
+            //Cast object into string
+            String addIn = (String) obj;
+
+            //Check if the add in is valid
+            if(isValidAddIn(addIn)){
+                addInsList.remove(addIn);
+                super.setItemPrice((itemPrice()));
+                return true;
+            }
+        }
         return false;
     }
 
     //Sum of basic coffee plus add ins. Include tax?
     public double itemPrice(){
-        double sum = coffeeSizePrice() + Constants.COFFEE_ADD_IN * addInsList.size();
+        double sum = coffeeSizePrice()*super.getItemQuantity() + Constants.COFFEE_ADD_IN * addInsList.size();
         return sum;
     }
 
