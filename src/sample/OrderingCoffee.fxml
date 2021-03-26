@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
@@ -17,16 +15,7 @@
             <CheckBox id="whippedCreamCheckBox" mnemonicParsing="false" text="Whipped Cream" />
          </children>
       </HBox>
-      <HBox layoutX="28.0" layoutY="204.0" prefHeight="157.0" prefWidth="219.0">
-         <children>
-            <ListView fx:id="selectableDonuts" prefHeight="157.0" prefWidth="226.0" />
-         </children>
-      </HBox>
-      <HBox layoutX="350.0" layoutY="204.0" prefHeight="157.0" prefWidth="219.0">
-         <children>
-            <ListView prefHeight="157.0" prefWidth="278.0" />
-         </children>
-      </HBox>
-      <ComboBox fx:id="combobox" layoutX="28.0" layoutY="44.0" onAction="#handleDonutSelection" prefWidth="150.0" promptText="Select Donut" />
+      <HBox layoutX="28.0" layoutY="204.0" prefHeight="157.0" prefWidth="219.0" />
+      <HBox layoutX="350.0" layoutY="204.0" prefHeight="157.0" prefWidth="219.0" />
    </children>
 </AnchorPane>

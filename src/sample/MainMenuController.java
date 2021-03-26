@@ -17,7 +17,7 @@ public class MainMenuController {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Order Coffee");
-        window.setScene(new Scene(root, 600, 275));
+        window.setScene(new Scene(root, 600, 475));
         window.show();
     }
 
@@ -27,7 +27,7 @@ public class MainMenuController {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Order Donut");
-        window.setScene(new Scene(root, 600, 275));
+        window.setScene(new Scene(root, 600, 475));
         window.show();
     }
 

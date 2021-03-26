@@ -15,37 +15,9 @@ import javafx.scene.layout.HBox;
 
 import javax.swing.*;
 
-public class OrderingCoffeeController implements Initializable {
+public class OrderingCoffeeController {
 
-    //Create combobox and create a list with its values to the three donut choices to be initialized.
-    @FXML ComboBox combobox;
-    ObservableList<String> list = FXCollections.observableArrayList("Yeast Donut","Cake Donut","Donut Holes");
 
-    @FXML
-    private ListView<String> selectableDonuts;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        combobox.setItems(list);
-    }
-
-    //Once a donut type is chosen
-    public void handleDonutSelection(ActionEvent actionEvent) {
-        String donutChosen = combobox.getValue().toString();
-
-        if(donutChosen.equals("Yeast Donut")) {
-
-        }
-
-        else if(donutChosen.equals("Cake Donut")) {
-
-        }
-
-        else if(donutChosen.equals("Donut Holes")) {
-
-        }
-
-    }
 
 
 
