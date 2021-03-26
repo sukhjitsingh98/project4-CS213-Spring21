@@ -27,11 +27,12 @@ public class OrderingDonutsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //initialize combobox
         combobox.setItems(list);
+        combobox.getSelectionModel().selectFirst(); //selects the first item as default instead of non-selection
+        loadselectableDonuts(list.get(0)); //initialize the listview with the first selection since it's default.
 
-        //ListView1
-        selectableDonuts.getItems().addAll(flavorList);
     }
 
+    //will initialize the selectable listview depending on the donut type.
     public void loadselectableDonuts(String donutChosen){
 
         //remove all items from the listview, then from the list
@@ -39,14 +40,12 @@ public class OrderingDonutsController implements Initializable {
         flavorList.removeAll(flavorList);
 
         if(donutChosen.equals("Yeast Donut")) {
-
             //add the flavor available to that type.
             flavorList.add("Vanilla");
             flavorList.add("Strawberry");
             flavorList.add("Chocolate");
             //add the items on the list to the listview.
             selectableDonuts.getItems().addAll(flavorList);
-
         }
 
         else if(donutChosen.equals("Cake Donut")) {
@@ -66,7 +65,6 @@ public class OrderingDonutsController implements Initializable {
             //add the items on the list to the listview.
             selectableDonuts.getItems().addAll(flavorList);
         }
-
     }
 
     //Once a donut type is chosen
