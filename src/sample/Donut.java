@@ -7,7 +7,6 @@ public class Donut extends MenuItem implements Customizable{
     private String donutType;
     private ArrayList<String> flavors = new ArrayList<String>();
 
-    //Maybe include flavors as well
     public Donut(String donutType, int donutQuantity){
         super(donutQuantity);
         this.donutType = donutType;
@@ -16,12 +15,31 @@ public class Donut extends MenuItem implements Customizable{
 
     //Add flavors
     public boolean add(Object obj){
-        //check for donut type
-        //based on that check if the flavor matches that donut
+        if(obj instanceof String){
+            //Cast object into string
+            String flavor = (String) obj;
+
+            //Check if the add in is valid
+            if(isValidFlavor(flavor) && ! flavors.contains(flavor)){
+                flavors.add(flavor);
+                return true;
+            }
+        }
         return false;
     }
+
     //Remove flavors
     public boolean remove(Object obj){
+        if(obj instanceof String){
+            //Cast object into string
+            String flavor = (String) obj;
+
+            //Check if the add in is valid
+            if(isValidFlavor(flavor) && flavors.contains(flavor)){
+                flavors.remove(flavor);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -41,5 +59,28 @@ public class Donut extends MenuItem implements Customizable{
 
     public double getDonutPrice(){
         return super.getItemPrice();
+    }
+
+    public void setDonutQuanitity(int donutQuantity){
+        super.setItemQuantity(donutQuantity);
+    }
+
+    private boolean isValidFlavor(String flavor) {
+        if(donutType.equals("Yeast Donut")){
+            if(flavor.equals("Vanilla") || flavor.equals("Strawberry") || flavor.equals("Chocolate")){
+                return true;
+            }
+        }
+        else if(donutType.equals("Cake Donut")){
+            if(flavor.equals("Jelly") || flavor.equals("Old Fashioned") || flavor.equals("Chocolate")){
+                return true;
+            }
+        }
+        else if(donutType.equals("Donut Hole")){
+            if(flavor.equals("Jelly Holes") || flavor.equals("Cinnamon Sugar Holes") || flavor.equals("Glazed Holes")){
+                return true;
+            }
+        }
+        return false;
     }
 }

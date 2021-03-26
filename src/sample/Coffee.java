@@ -20,7 +20,7 @@ public class Coffee extends MenuItem implements Customizable{
             String addIn = (String) obj;
 
             //Check if the add in is valid
-            if(isValidAddIn(addIn)){
+            if(isValidAddIn(addIn) && !addInsList.contains(addIn)){
                 addInsList.add(addIn);
                 super.setItemPrice((itemPrice()));
                 return true;
@@ -36,7 +36,7 @@ public class Coffee extends MenuItem implements Customizable{
             String addIn = (String) obj;
 
             //Check if the add in is valid
-            if(isValidAddIn(addIn)){
+            if(isValidAddIn(addIn) && addInsList.contains(addIn)){
                 addInsList.remove(addIn);
                 super.setItemPrice((itemPrice()));
                 return true;
@@ -47,7 +47,7 @@ public class Coffee extends MenuItem implements Customizable{
 
     //Sum of basic coffee plus add ins. Include tax?
     public double itemPrice(){
-        double sum = coffeeSizePrice()*super.getItemQuantity() + Constants.COFFEE_ADD_IN * addInsList.size();
+        double sum = coffeeSizePrice() * super.getItemQuantity() + Constants.COFFEE_ADD_IN * addInsList.size();
         return sum;
     }
 
@@ -76,5 +76,15 @@ public class Coffee extends MenuItem implements Customizable{
 
     public double getCoffeePrice(){
         return super.getItemPrice();
+    }
+
+    public void setCoffeeType(String coffeeType){
+        this.coffeeType = coffeeType;
+        super.setItemPrice(itemPrice());
+    }
+
+    public void setCoffeeQuantity(int coffeeQuantity){
+        super.setItemQuantity(coffeeQuantity);
+        super.setItemPrice(itemPrice());
     }
 }

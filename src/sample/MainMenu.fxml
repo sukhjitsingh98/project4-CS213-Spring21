@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -17,7 +13,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="319.0" prefWidth="390.0">
+      <AnchorPane prefHeight="332.0" prefWidth="390.0">
          <children>
             <GridPane layoutX="14.0" layoutY="89.0" prefHeight="285.0" prefWidth="390.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columnConstraints>
@@ -46,18 +42,23 @@
                            </image></ImageView>
                      </graphic>
                   </Button>
-                  <ImageView fitHeight="115.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets left="1.0" />
-                     </GridPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="115.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="1.0" />
-                     </GridPane.margin>
-                  </ImageView>
+                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="127.0" prefWidth="168.0" text="View/Edit Current Order" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="97.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="131.0" prefWidth="168.0" text="View/Edit All Store Orders" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="98.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
                </children>
             </GridPane>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="12.0" prefHeight="35.0" prefWidth="363.0" text="RU Café Dashboard" textAlignment="CENTER">
+               <font>
+                  <Font name="Comic Sans MS" size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

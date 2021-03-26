@@ -16,4 +16,7 @@ public final class Constants {
     public static final double GRANDE_BLACK_COFFEE = 2.99;
     public static final double VENTI_BLACK_COFFEE = 3.49;
     public static final double COFFEE_ADD_IN = 0.20;
+
+    //StoreOrders Cnstants
+    public static final int FIRST_ORDER = 1;
 }

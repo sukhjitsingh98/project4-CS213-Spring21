@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OrderingCoffeeController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OrderingCoffeeController">
    <children>
       <HBox layoutX="14.0" layoutY="123.0" prefHeight="25.0" prefWidth="383.0">
          <children>
-            <CheckBox id="creamCheckBox" mnemonicParsing="false" prefHeight="17.0" prefWidth="65.0" text="Cream" />
-            <CheckBox id="syrupCheckBox" mnemonicParsing="false" prefHeight="17.0" prefWidth="59.0" text="Syrup" />
-            <CheckBox id="milkCheckBox" mnemonicParsing="false" prefHeight="17.0" prefWidth="59.0" text="Milk" />
-            <CheckBox id="caramelCheckBox" mnemonicParsing="false" prefHeight="17.0" prefWidth="74.0" text="Caramel" />
-            <CheckBox id="whippedCreamCheckBox" mnemonicParsing="false" text="Whipped Cream" />
+            <CheckBox fx:id="creamCheckBox" mnemonicParsing="false" onAction="#handleCreamCheckBoxSelection" prefHeight="17.0" prefWidth="65.0" text="Cream" />
+            <CheckBox fx:id="syrupCheckBox" mnemonicParsing="false" onAction="#handleSyrupCheckBoxSelection" prefHeight="17.0" prefWidth="59.0" text="Syrup" />
+            <CheckBox fx:id="milkCheckBox" mnemonicParsing="false" onAction="#handleMilkCheckBoxSelection" prefHeight="17.0" prefWidth="59.0" text="Milk" />
+            <CheckBox fx:id="caramelCheckBox" mnemonicParsing="false" onAction="#handleCaramelCheckBoxSelection" prefHeight="17.0" prefWidth="74.0" text="Caramel" />
+            <CheckBox fx:id="whippedCreamCheckBox" mnemonicParsing="false" onAction="#handleWhippedCreamCheckBoxSelection" text="Whipped Cream" />
          </children>
       </HBox>
       <HBox layoutX="28.0" layoutY="204.0" prefHeight="157.0" prefWidth="219.0" />
       <HBox layoutX="350.0" layoutY="204.0" prefHeight="157.0" prefWidth="219.0" />
-      <ComboBox fx:id="sizeCombobox" layoutX="419.0" layoutY="123.0" onAction="#handleSizeSelection" prefWidth="150.0" />
+      <ComboBox fx:id="sizeCombobox" layoutX="419.0" layoutY="123.0" onAction="#handleSizeSelection" prefWidth="150.0" promptText="Coffee Size" />
       <ComboBox fx:id="countCombobox" layoutX="419.0" layoutY="179.0" onAction="#handleCountSelection" prefWidth="150.0" promptText="Count" />
+      <TextField fx:id="subTotalTextField" editable="false" layoutX="28.0" layoutY="179.0" promptText="subtotal" />
    </children>
 </AnchorPane>

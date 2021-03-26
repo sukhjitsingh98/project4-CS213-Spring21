@@ -11,7 +11,9 @@ import java.io.IOException;
 
 public class MainMenuController {
 
-    //Create popup window for odering coffee
+    StoreOrders storeOrders = new StoreOrders();
+
+    //Create popup window for ordering coffee
     public void handleCoffeeOrder(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("OrderingCoffee.fxml"));
         Stage window = new Stage();
