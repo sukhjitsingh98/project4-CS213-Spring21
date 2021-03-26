@@ -19,5 +19,6 @@
       <ComboBox fx:id="sizeCombobox" layoutX="419.0" layoutY="123.0" onAction="#handleSizeSelection" prefWidth="150.0" promptText="Coffee Size" />
       <ComboBox fx:id="countCombobox" layoutX="419.0" layoutY="179.0" onAction="#handleCountSelection" prefWidth="150.0" promptText="Count" />
       <TextField fx:id="subTotalTextField" editable="false" layoutX="28.0" layoutY="179.0" promptText="subtotal" />
+      <Button layoutX="39.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleAddToOrder" text="Add to Order" />
    </children>
 </AnchorPane>

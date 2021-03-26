@@ -10,6 +10,7 @@ public class StoreOrders implements Customizable{
     //Later on the user will be ale to submit this order, after which a new order will be generated
     public StoreOrders(){
         Order firstOrder = new Order(Constants.FIRST_ORDER);
+        orders.add(firstOrder);
     }
 
     public boolean add(Object obj){
@@ -35,5 +36,9 @@ public class StoreOrders implements Customizable{
 
     public Order getOrder(int i){
         return orders.get(i);
+    }
+
+    public int getNumOrders(){
+        return orders.size();
     }
 }
