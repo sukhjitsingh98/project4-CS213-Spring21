@@ -29,7 +29,6 @@ public class OrderingDonutsController implements Initializable {
         combobox.setItems(list);
 
         //ListView1
-        flavorList.add("hi");
         selectableDonuts.getItems().addAll(flavorList);
     }
 
@@ -47,7 +46,6 @@ public class OrderingDonutsController implements Initializable {
             flavorList.add("Chocolate");
             //add the items on the list to the listview.
             selectableDonuts.getItems().addAll(flavorList);
-            System.out.println("T");
 
         }
 
