@@ -65,6 +65,10 @@ public class Order implements Customizable{
         return totalPrice;
     }
 
+    public ArrayList<MenuItem> getItems() {
+        return items;
+    }
+
     //test
     public static void main(String[] args) {
         Donut yeastDonut = new Donut("Yeast Donut",1);

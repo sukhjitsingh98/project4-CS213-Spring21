@@ -42,7 +42,7 @@
                            </image></ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="127.0" prefWidth="168.0" text="View/Edit Current Order" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleCurrentOrder" prefHeight="127.0" prefWidth="168.0" text="View/Edit Current Order" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="97.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>

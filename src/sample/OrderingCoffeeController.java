@@ -2,6 +2,7 @@ package sample;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -37,6 +38,7 @@ public class OrderingCoffeeController implements Initializable {
 
     Coffee coffee = new Coffee("", 0);
 
+    private DecimalFormat df2 = new DecimalFormat("#.##");
     /*
     NOTE:
     Need to figure out way to send data from this screen to orders screen
@@ -56,76 +58,78 @@ public class OrderingCoffeeController implements Initializable {
         //since the default is tall and count is 1, update the price to default once implemented.
         coffee.setCoffeeType(sizeCombobox.getSelectionModel().getSelectedItem().toString());
         coffee.setCoffeeQuantity(Integer.parseInt((String) countCombobox.getSelectionModel().getSelectedItem()));
-        subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+        subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
 
     }
 
     //on selection update the price
     public void handleSizeSelection(ActionEvent actionEvent) {
         coffee.setCoffeeType(sizeCombobox.getSelectionModel().getSelectedItem().toString());
-        subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+        subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
     }
 
     public void handleCountSelection(ActionEvent actionEvent) {
-        coffee.setCoffeeQuantity((int) countCombobox.getSelectionModel().getSelectedItem());
-        subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+        coffee.setCoffeeQuantity(Integer.parseInt((String) countCombobox.getSelectionModel().getSelectedItem()));
+        subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
     }
 
     public void handleCreamCheckBoxSelection(ActionEvent actionEvent){
         if(creamCheckBox.isSelected()){
             coffee.add("cream");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
         else if(!creamCheckBox.isSelected()){
             coffee.remove("cream");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
     }
 
     public void handleSyrupCheckBoxSelection(ActionEvent actionEvent){
-        if(creamCheckBox.isSelected()){
+        if(syrupCheckBox.isSelected()){
             coffee.add("syrup");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
-        else if(!creamCheckBox.isSelected()){
+        else if(!syrupCheckBox.isSelected()){
             coffee.remove("syrup");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
     }
 
     public void handleMilkCheckBoxSelection(ActionEvent actionEvent){
-        if(creamCheckBox.isSelected()){
+        if(milkCheckBox.isSelected()){
             coffee.add("milk");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
-        else if(!creamCheckBox.isSelected()){
+        else if(!milkCheckBox.isSelected()){
             coffee.remove("milk");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
     }
 
     public void handleCaramelCheckBoxSelection(ActionEvent actionEvent){
-        if(creamCheckBox.isSelected()){
+        if(caramelCheckBox.isSelected()){
             coffee.add("caramel");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
-        else if(!creamCheckBox.isSelected()){
+        else if(!caramelCheckBox.isSelected()){
             coffee.remove("caramel");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
     }
 
     public void handleWhippedCreamCheckBoxSelection(ActionEvent actionEvent){
         if(whippedCreamCheckBox.isSelected()){
             coffee.add("whipped cream");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
         else if(!whippedCreamCheckBox.isSelected()){
             coffee.remove("whipped cream");
-            subTotalTextField.setText(Double.toString(coffee.getCoffeePrice()));
+            subTotalTextField.setText(df2.format(coffee.getCoffeePrice()));
         }
     }
 
+    //THIS DOESNT WORK, NEEDS FIXING
+    //Send Coffee object to MainMenuController
     public void handleAddToOrder(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
         Parent root = loader.load();

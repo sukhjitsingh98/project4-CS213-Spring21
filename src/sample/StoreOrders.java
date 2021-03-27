@@ -9,8 +9,8 @@ public class StoreOrders implements Customizable{
     //When MainMenu will open, a default first order will be generated which the user will add items to.
     //Later on the user will be ale to submit this order, after which a new order will be generated
     public StoreOrders(){
-        Order firstOrder = new Order(Constants.FIRST_ORDER);
-        orders.add(firstOrder);
+        //Order firstOrder = new Order(Constants.FIRST_ORDER);
+        //orders.add(firstOrder);
     }
 
     public boolean add(Object obj){
