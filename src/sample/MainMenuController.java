@@ -9,6 +9,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/*
+Right now the issue is that once coffee is chosen, the user clicks add to order button in coffee GUI. The coffee data
+ is passed to this controller and saved in a local method version of the currentOrder object. The problem is that it
+ doesnt save in the global currentOrder object meaning that accessing any changes outside of the method results in
+ nothing. The object is not updated with the new data.
+ */
 public class MainMenuController {
 
     int orderNumber = Constants.FIRST_ORDER;
@@ -22,7 +29,7 @@ public class MainMenuController {
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Order Coffee");
         window.setScene(new Scene(root, 600, 475));
-        window.show();
+        window.showAndWait();
     }
 
     //Popup for ordering donuts
@@ -43,6 +50,9 @@ public class MainMenuController {
         CurrentOrderDetailController currentOrderDetailController = loader.getController();
         currentOrderDetailController.getMainMenuCurrentOrder(currentOrder);
 
+        //USE THIS TO DEBUG
+        //System.out.println(currentOrder.getItems().get(0).getItemPrice());
+
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Current Order Detail");
@@ -50,10 +60,10 @@ public class MainMenuController {
         window.show();
     }
 
-    //NOTE:For some reason this doesnt work
     public void addOrderItem(Object obj){
         //storeOrders.getOrder(storeOrders.getNumOrders()-1).add(obj);
         currentOrder.add(obj);
+        System.out.println(this.currentOrder.getItems().get(0).getItemPrice());
     }
 
     public void addOrderToStore(Object obj){

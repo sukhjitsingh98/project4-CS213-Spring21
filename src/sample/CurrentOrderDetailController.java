@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 
 public class CurrentOrderDetailController implements Initializable {
 
-    //NONE OF THIS WORKS
     @FXML
     ListView currentOrderListView;
 
@@ -25,6 +24,6 @@ public class CurrentOrderDetailController implements Initializable {
 
     public void getMainMenuCurrentOrder(Order currentOrder) {
         this.currentOrder =  currentOrder;
-        System.out.println(currentOrder.getItems().get(0).getItemPrice());
+        //System.out.println(this.currentOrder.getItems().get(0).getItemPrice());
     }
 }

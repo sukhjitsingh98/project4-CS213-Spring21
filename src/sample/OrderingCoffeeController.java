@@ -12,11 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 
@@ -24,6 +22,9 @@ public class OrderingCoffeeController implements Initializable {
 
     @FXML
     TextField subTotalTextField;
+
+    @FXML
+    Button addToOrderButton;
 
     @FXML
     CheckBox creamCheckBox, syrupCheckBox, milkCheckBox, caramelCheckBox, whippedCreamCheckBox;
@@ -138,7 +139,10 @@ public class OrderingCoffeeController implements Initializable {
         MainMenuController mainMenuController = loader.getController();
         mainMenuController.addOrderItem(coffee);
 
-
+        /*Code to close the screen once order is placed
+        Stage stage = (Stage) addToOrderButton.getScene().getWindow();
+        stage.close();
+        */
     }
 
 }
