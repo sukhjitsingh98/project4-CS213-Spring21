@@ -16,14 +16,21 @@ public class CurrentOrderDetailController implements Initializable {
     Order currentOrder = new Order(0);
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //sizes
+        //Anything we put here never gets updated. Best to keep blank
+    }
+
+    public void receiveMainMenuCurrentOrder(Order currentOrder) {
+        this.currentOrder =  currentOrder;
+        System.out.println(this.currentOrder.getItems().get(0).getItemPrice());
+
         if(!currentOrder.getItems().isEmpty()) {
-            currentOrderListView.getItems().add(currentOrder.getItems().get(0).getItemPrice());
+            currentOrderListView.getItems().add(currentOrder.getItems().get(0).getItemString());
+            currentOrderListView.getSelectionModel().selectFirst();
         }
     }
 
-    public void getMainMenuCurrentOrder(Order currentOrder) {
-        this.currentOrder =  currentOrder;
-        //System.out.println(this.currentOrder.getItems().get(0).getItemPrice());
+    public void printCurrent(){
+        //For debugging
+        System.out.println(currentOrderListView.getSelectionModel().getSelectedItem());
     }
 }

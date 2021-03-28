@@ -11,6 +11,10 @@ public class Coffee extends MenuItem implements Customizable{
         super(coffeeQuantity);
         this.coffeeType = coffeeType;
         super.setItemPrice(itemPrice());
+
+        //Keeping the string in the super class will make this program more generic and will reduce the need to use
+        // type casting when extracting the strings.
+        super.setItemString(coffeeDataString());
     }
 
     //Used to add an add in into the arrayList. Assume only one of each type of add in is allowed.
@@ -23,6 +27,7 @@ public class Coffee extends MenuItem implements Customizable{
             if(isValidAddIn(addIn) && !addInsList.contains(addIn)){
                 addInsList.add(addIn);
                 super.setItemPrice((itemPrice()));
+                super.setItemString(coffeeDataString());
                 return true;
             }
         }
@@ -39,6 +44,7 @@ public class Coffee extends MenuItem implements Customizable{
             if(isValidAddIn(addIn) && addInsList.contains(addIn)){
                 addInsList.remove(addIn);
                 super.setItemPrice((itemPrice()));
+                super.setItemString(coffeeDataString());
                 return true;
             }
         }
@@ -81,10 +87,29 @@ public class Coffee extends MenuItem implements Customizable{
     public void setCoffeeType(String coffeeType){
         this.coffeeType = coffeeType;
         super.setItemPrice(itemPrice());
+        super.setItemString(coffeeDataString());
     }
 
     public void setCoffeeQuantity(int coffeeQuantity){
         super.setItemQuantity(coffeeQuantity);
         super.setItemPrice(itemPrice());
+        super.setItemString(coffeeDataString());
+    }
+
+    //Having a string will be easier to display the data
+    public String coffeeDataString(){
+        String coffeeData =
+                coffeeType + " Coffee, " + "Quantity: " + super.getItemQuantity() + ", Addins: " + addInsToString();
+        return coffeeData;
+    }
+
+    private String addInsToString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String s : addInsList)
+        {
+            stringBuilder.append(s);
+            stringBuilder.append(",");
+        }
+        return stringBuilder.toString();
     }
 }

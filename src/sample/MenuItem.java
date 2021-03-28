@@ -3,6 +3,7 @@ package sample;
 public class MenuItem {
     private double itemPrice;
     private int itemQuantity;
+    private String itemString;
 
     //Constructor
     public MenuItem (int itemQuantity){
@@ -23,5 +24,13 @@ public class MenuItem {
 
     public int getItemQuantity() {
         return itemQuantity;
+    }
+
+    public void setItemString(String itemString){
+        this.itemString = itemString;
+    }
+
+    public String getItemString() {
+        return itemString;
     }
 }
