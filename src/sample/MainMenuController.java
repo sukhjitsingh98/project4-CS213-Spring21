@@ -24,7 +24,16 @@ public class MainMenuController {
 
     //Create popup window for ordering coffee
     public void handleCoffeeOrder(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("OrderingCoffee.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("OrderingCoffee.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("OrderingCoffee.fxml"));
+        Parent root = loader.load();
+
+        OrderingCoffeeController coffeeController = loader.getController();
+        coffeeController.selectedThingProperty().addListener((observableValue, coffee, t1) -> {
+            currentOrder.add(coffeeController.getCoffee());
+            System.out.println(currentOrder.getItems().get(0).getItemPrice()); //For debugging
+        });
+
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Order Coffee");
@@ -51,19 +60,13 @@ public class MainMenuController {
         currentOrderDetailController.getMainMenuCurrentOrder(currentOrder);
 
         //USE THIS TO DEBUG
-        //System.out.println(currentOrder.getItems().get(0).getItemPrice());
+        System.out.println(currentOrder.getItems().get(0).getItemPrice());
 
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Current Order Detail");
         window.setScene(new Scene(root, 600, 475));
         window.show();
-    }
-
-    public void addOrderItem(Object obj){
-        //storeOrders.getOrder(storeOrders.getNumOrders()-1).add(obj);
-        currentOrder.add(obj);
-        System.out.println(this.currentOrder.getItems().get(0).getItemPrice());
     }
 
     public void addOrderToStore(Object obj){

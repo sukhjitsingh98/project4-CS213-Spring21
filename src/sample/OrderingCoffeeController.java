@@ -5,6 +5,8 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -129,20 +131,23 @@ public class OrderingCoffeeController implements Initializable {
         }
     }
 
-    //THIS DOESNT WORK, NEEDS FIXING
-    //Send Coffee object to MainMenuController
+    private final ReadOnlyObjectWrapper<Coffee> selectedThing = new ReadOnlyObjectWrapper<>();
+
+    public ReadOnlyObjectProperty<Coffee> selectedThingProperty() {
+        return selectedThing.getReadOnlyProperty() ;
+    }
+
+    public Coffee getCoffee(){
+        return coffee;
+    }
+
     public void handleAddToOrder(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
-        Parent root = loader.load();
+        selectedThing.set(coffee);
 
-        //Get controller of main menu
-        MainMenuController mainMenuController = loader.getController();
-        mainMenuController.addOrderItem(coffee);
-
-        /*Code to close the screen once order is placed
+        //Code to close the screen once order is placed
         Stage stage = (Stage) addToOrderButton.getScene().getWindow();
         stage.close();
-        */
+
     }
 
 }
