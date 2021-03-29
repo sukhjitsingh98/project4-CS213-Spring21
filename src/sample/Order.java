@@ -69,20 +69,20 @@ public class Order implements Customizable{
         return items;
     }
 
-    //test
-    public static void main(String[] args) {
-        Donut yeastDonut = new Donut("Yeast Donut",1);
-        Order newOrder = new Order(1);
-        newOrder.add(yeastDonut);
-        System.out.println(newOrder.getTotal());
-        newOrder.remove(yeastDonut);
-        Donut donutHole = new Donut("Donut Hole",3);
-        newOrder.add(donutHole);
-        System.out.println(newOrder.getTotal());
-        newOrder.add(yeastDonut);
-        newOrder.add(yeastDonut);
-        System.out.println(newOrder.getTotal());
-    }
+//    //test
+//    public static void main(String[] args) {
+//        Donut yeastDonut = new Donut("Yeast Donut",1);
+//        Order newOrder = new Order(1);
+//        newOrder.add(yeastDonut);
+//        System.out.println(newOrder.getTotal());
+//        newOrder.remove(yeastDonut);
+//        Donut donutHole = new Donut("Donut Hole",3);
+//        newOrder.add(donutHole);
+//        System.out.println(newOrder.getTotal());
+//        newOrder.add(yeastDonut);
+//        newOrder.add(yeastDonut);
+//        System.out.println(newOrder.getTotal());
+//    }
 
 }
 

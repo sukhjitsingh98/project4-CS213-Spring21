@@ -4,13 +4,17 @@ import java.util.ArrayList;
 
 //This class is not listed in the project description but might be needed since its use is mentioned
 public class Donut extends MenuItem implements Customizable{
+
     private String donutType;
     private ArrayList<String> flavors = new ArrayList<String>();
+    private String flavor;
 
-    public Donut(String donutType, int donutQuantity){
+    public Donut(String donutType, int donutQuantity, String flavor){
         super(donutQuantity);
         this.donutType = donutType;
         super.setItemPrice(itemPrice());
+        this.flavor = flavor;
+
     }
 
     //Add flavors
@@ -83,4 +87,14 @@ public class Donut extends MenuItem implements Customizable{
         }
         return false;
     }
+
+    public void setDonutQuantity(int donutQuantity){
+        super.setItemQuantity(donutQuantity);
+        super.setItemPrice(itemPrice());
+    }
+
+    public String getFlavor(){
+        return flavor;
+    }
+
 }

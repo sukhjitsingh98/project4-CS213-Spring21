@@ -36,12 +36,19 @@ public class MainMenuController {
 
     //Popup for ordering donuts
     public void handleDonutOrder(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("OrderingDonuts.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("OrderingDonuts.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("OrderingDonuts.fxml"));
+        Parent root = loader.load();
+
+        OrderingDonutsController donutsController = loader.getController();
+
+
+
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Order Donut");
         window.setScene(new Scene(root, 600, 475));
-        window.show();
+        window.showAndWait();
     }
 
     //Popup for current order
