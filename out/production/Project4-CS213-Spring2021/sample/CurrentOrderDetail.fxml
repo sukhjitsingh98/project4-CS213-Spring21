@@ -7,22 +7,30 @@
 <AnchorPane prefHeight="400.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CurrentOrderDetailController">
    <children>
       <ListView fx:id="currentOrderListView" layoutX="197.0" layoutY="14.0" prefHeight="380.0" prefWidth="252.0" />
-      <Button layoutX="6.0" layoutY="14.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="186.0" text="Delete Selected Item" />
-      <Button layoutX="6.0" layoutY="118.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="186.0" text="Place Order" />
-      <TextField fx:id="currentOrderSubTotalField" editable="false" layoutX="6.0" layoutY="223.0" prefHeight="53.0" prefWidth="186.0" promptText="Sub Total">
+      <Button layoutX="6.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleRemoveMenuItem" prefHeight="76.0" prefWidth="186.0" text="Delete Selected Item" />
+      <Button fx:id="placeOrderButton" layoutX="6.0" layoutY="125.0" mnemonicParsing="false" onAction="#handlePlaceOrder" prefHeight="76.0" prefWidth="186.0" text="Place Order" />
+      <TextField fx:id="currentOrderSubTotalField" alignment="CENTER_RIGHT" editable="false" layoutX="6.0" layoutY="226.0" prefHeight="37.0" prefWidth="186.0" promptText="Sub Total">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="currentOrderTotalField" alignment="CENTER_RIGHT" editable="false" layoutX="6.0" layoutY="350.0" prefHeight="37.0" prefWidth="186.0" promptText="Total">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="currentOrderTotalField" editable="false" layoutX="6.0" layoutY="341.0" prefHeight="53.0" prefWidth="186.0" promptText="Total">
+      <TextField fx:id="currentOrderSalesTaxField" alignment="CENTER_RIGHT" editable="false" layoutX="6.0" layoutY="288.0" prefHeight="37.0" prefWidth="186.0" promptText="Sales Tax">
          <font>
-            <Font size="24.0" />
+            <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="currentOrderSalesTaxField" editable="false" layoutX="6.0" layoutY="282.0" prefHeight="53.0" prefWidth="186.0" promptText="Sales Tax">
+      <Label layoutX="147.0" layoutY="206.0" text="Subtotal" />
+      <Label layoutX="142.0" layoutY="268.0" prefHeight="17.0" prefWidth="52.0" text="Sales Tax" />
+      <Label layoutX="115.0" layoutY="328.0" prefHeight="21.0" prefWidth="78.0" text="Order Total">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font>
-      </TextField>
+      </Label>
+      <Label fx:id="errorMessageLabel" layoutX="6.0" layoutY="14.0" prefHeight="24.0" prefWidth="186.0" />
    </children>
 </AnchorPane>

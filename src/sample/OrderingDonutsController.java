@@ -120,9 +120,8 @@ public class OrderingDonutsController implements Initializable {
 
         //create donut with selected type and count
         Donut crntDonut = new Donut(combobox.getSelectionModel().getSelectedItem().toString(), Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()), selectableDonuts.getSelectionModel().getSelectedItem().toString());
-        System.out.println(combobox.getSelectionModel().getSelectedItem().toString() + " : " + Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()) + " : " + selectableDonuts.getSelectionModel().getSelectedItem().toString());
-        System.out.println(crntDonut.getItemPrice());
-        System.out.println();
+        //System.out.println(combobox.getSelectionModel().getSelectedItem().toString() + " : " + Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()) + " : " + selectableDonuts.getSelectionModel().getSelectedItem().toString());
+        //System.out.println(crntDonut.getItemPrice());
 
         //add the donut order to the list of selected donuts
         selectedDonutList.add(crntDonut);
@@ -136,12 +135,16 @@ public class OrderingDonutsController implements Initializable {
     public void handleDonutRemoval(ActionEvent actionEvent) {
 
         //make sure a listview item has been chosen.
-        if(selectableDonuts.getSelectionModel().getSelectedItem() == null) {
+        if(selectedDonuts.getSelectionModel().getSelectedItem() == null) {
             noSelectionWarning1.setText("Must first choose a donut to remove.");
             return;
         }
 
-        //Get the donut that is being removed.
 
+        //Get the donut that is being removed.
+        int donutIndex = Integer.parseInt(selectedDonuts.getSelectionModel().getSelectedIndices().toString().substring(1,2));
+        selectedDonutList.remove(donutIndex); //remove the donut
+        displaySelectedDonuts(); //update the listview
+        noSelectionWarning1.setText("");
     }
 }
