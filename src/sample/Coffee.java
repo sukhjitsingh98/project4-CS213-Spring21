@@ -105,8 +105,7 @@ public class Coffee extends MenuItem implements Customizable{
 
     private String addInsToString(){
         StringBuilder stringBuilder = new StringBuilder();
-        for (String s : addInsList)
-        {
+        for (String s : addInsList) {
             stringBuilder.append(s);
             stringBuilder.append(",");
         }

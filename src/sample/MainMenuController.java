@@ -44,21 +44,27 @@ public class MainMenuController {
         window.show();
     }
 
-    //Popup for ordering donuts
+    //Popup for current order
     public void handleCurrentOrder(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderDetail.fxml"));
         Parent root = loader.load();
 
         CurrentOrderDetailController currentOrderDetailController = loader.getController();
         currentOrderDetailController.receiveMainMenuCurrentOrder(currentOrder);
-        currentOrderDetailController.printCurrent();
-        //USE THIS TO DEBUG
-        System.out.println(currentOrder.getItems().get(0).getItemPrice());
+
+        //When Place Order button is pressed, the modified order is sent
+        currentOrderDetailController.selectedThingProperty().addListener((observableValue, currentOrder, t1) -> {
+            //Order is complete and can be added to store orders list
+            storeOrders.add(currentOrderDetailController.getCurrentOrder());
+            orderNumber++;
+            //Create a new store order with incremented order number
+            this.currentOrder = new Order(orderNumber);
+        });
 
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Current Order Detail");
-        window.setScene(new Scene(root, 600, 475));
+        window.setScene(new Scene(root, 455, 400));
         window.show();
     }
 
