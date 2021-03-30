@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class StoreOrdersPageController implements Initializable {
+public class StoreOrdersPageController {
 
     @FXML
     ComboBox orderNumberCombobox;
@@ -45,10 +45,8 @@ public class StoreOrdersPageController implements Initializable {
             setOrderNumberCombobox();
             orderNumberCombobox.getSelectionModel().selectFirst();
 
-            //make the listview match the selected order in the combobox.
+            //make the listview match the selected order in the combobox. Also updates the price
             setStoreOrdersListview();
-
-            //Set the price of the storeOrder
         }
 
     }
@@ -83,8 +81,4 @@ public class StoreOrdersPageController implements Initializable {
         subtotalLabel.setText("$" + String.format("%.2f", selectedOrder.getTotal() + selectedOrder.getTotal()*Constants.NJ_SALES_USE_TAX_RATE));
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }
