@@ -84,7 +84,8 @@ public class MainMenuController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrdersPage.fxml"));
         Parent root = loader.load();
 
-        //StoreOrdersPageController storeOrdersPageController = loader.getController();
+        StoreOrdersPageController storeOrdersPageController = loader.getController();
+        storeOrdersPageController.receiveMainMenuCurrentOrder(storeOrders);
 
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
