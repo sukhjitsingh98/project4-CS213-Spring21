@@ -205,6 +205,12 @@ public class OrderingDonutsController implements Initializable {
     }
 
     public void handleAddToOrder(ActionEvent actionEvent) throws IOException {
+
+        if(selectedDonutList.isEmpty()) {
+            noSelectionWarning1.setText("Must order at least one donut to place an order.");
+            return;
+        }
+
         selectedThing.set(selectedDonutList);
 
         //Code to close the screen once order is placed

@@ -79,4 +79,17 @@ public class MainMenuController {
         window.showAndWait();
     }
 
+
+    public void handleStoreOrders(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrdersPage.fxml"));
+        Parent root = loader.load();
+
+        //StoreOrdersPageController storeOrdersPageController = loader.getController();
+
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Store Orders");
+        window.setScene(new Scene(root, 455, 400));
+        window.showAndWait();
+    }
 }
