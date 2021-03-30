@@ -8,7 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -19,7 +21,7 @@ public class OrderingDonutsController implements Initializable {
     //Create combobox and create a list with its values to the three donut choices to be initialized.
     @FXML
     ComboBox combobox;
-    ObservableList<String> list = FXCollections.observableArrayList("Yeast Donut","Cake Donut","Donut Holes");
+    ObservableList<String> list = FXCollections.observableArrayList("Yeast Donut","Cake Donut","Donut Hole");
 
     @FXML
     private ListView<String> selectableDonuts;
@@ -35,6 +37,9 @@ public class OrderingDonutsController implements Initializable {
     @FXML
     Label noSelectionWarning1;
 
+    @FXML
+    TextField subtotalField;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //initialize combobox
@@ -42,8 +47,11 @@ public class OrderingDonutsController implements Initializable {
         combobox.getSelectionModel().selectFirst(); //selects the first item as default instead of non-selection
         loadselectableDonuts(list.get(0)); //initialize the listview with the first selection since it's default.
 
+        //initialize the combobox which selects the number of donuts.
         countCombobox.setItems(countList);
         countCombobox.getSelectionModel().selectFirst();
+
+        subtotalField.setText("$0.00");
 
     }
 
@@ -72,11 +80,11 @@ public class OrderingDonutsController implements Initializable {
             selectableDonuts.getItems().addAll(flavorList);
         }
 
-        else if(donutChosen.equals("Donut Holes")) {
+        else if(donutChosen.equals("Donut Hole")) {
             //add the flavor available to that type.
-            flavorList.add("Jelly Holes");
-            flavorList.add("Cinnamon Sugar Holes");
-            flavorList.add("Glazed Holes");
+            flavorList.add("Jelly Hole");
+            flavorList.add("Cinnamon Sugar Hole");
+            flavorList.add("Glazed Hole");
             //add the items on the list to the listview.
             selectableDonuts.getItems().addAll(flavorList);
         }
@@ -107,6 +115,7 @@ public class OrderingDonutsController implements Initializable {
     @FXML
     ArrayList<Donut> selectedDonutList = new ArrayList<>();
     ObservableList<String> namesofSelection = FXCollections.observableArrayList();
+    BigDecimal subtotal = new BigDecimal("0");
 
     //add a donut of the selected type, selected flavor, and selected quantity. As of now it does not check if that type of donut of the same flavor already exists.
     public void handleDonutAddition(ActionEvent actionEvent) {
@@ -120,8 +129,6 @@ public class OrderingDonutsController implements Initializable {
 
         //create donut with selected type and count
         Donut crntDonut = new Donut(combobox.getSelectionModel().getSelectedItem().toString(), Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()), selectableDonuts.getSelectionModel().getSelectedItem().toString());
-        //System.out.println(combobox.getSelectionModel().getSelectedItem().toString() + " : " + Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()) + " : " + selectableDonuts.getSelectionModel().getSelectedItem().toString());
-        //System.out.println(crntDonut.getItemPrice());
 
         //add the donut order to the list of selected donuts
         selectedDonutList.add(crntDonut);
@@ -129,6 +136,11 @@ public class OrderingDonutsController implements Initializable {
         //Display the selectedDonutsCombobox
         displaySelectedDonuts();
         noSelectionWarning1.setText("");
+
+        //update the price subtotal
+        BigDecimal newSubtotal = subtotal.add(new BigDecimal(String.valueOf(crntDonut.itemPrice()))); //immutable so much create new
+        subtotal = newSubtotal;
+        subtotalField.setText("$" + newSubtotal);
     }
 
     //Remove one of the selected donuts.
@@ -140,11 +152,14 @@ public class OrderingDonutsController implements Initializable {
             return;
         }
 
-
         //Get the donut that is being removed.
         int donutIndex = Integer.parseInt(selectedDonuts.getSelectionModel().getSelectedIndices().toString().substring(1,2));
+        //before removing the donut subtrack its price from the subtotal.
+        BigDecimal newSubtotal = subtotal.subtract(new BigDecimal(String.valueOf(selectedDonutList.get(donutIndex).getItemPrice())));
+        subtotal = newSubtotal;
         selectedDonutList.remove(donutIndex); //remove the donut
         displaySelectedDonuts(); //update the listview
         noSelectionWarning1.setText("");
+        subtotalField.setText("$" + newSubtotal);
     }
 }
