@@ -1,16 +1,19 @@
 package sample;
 
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import java.math.BigDecimal;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,6 +25,12 @@ public class OrderingDonutsController implements Initializable {
     @FXML
     ComboBox combobox;
     ObservableList<String> list = FXCollections.observableArrayList("Yeast Donut","Cake Donut","Donut Hole");
+
+    @FXML
+    Button addOrder;
+
+    @FXML
+    Label subTotalLabel;
 
     @FXML
     private ListView<String> selectableDonuts;
@@ -38,25 +47,23 @@ public class OrderingDonutsController implements Initializable {
     Label noSelectionWarning1;
 
     @FXML
-    TextField subtotalField;
+    ArrayList<Donut> selectedDonutList = new ArrayList<>();
+    ObservableList<String> namesOfSelection = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //initialize combobox
         combobox.setItems(list);
         combobox.getSelectionModel().selectFirst(); //selects the first item as default instead of non-selection
-        loadselectableDonuts(list.get(0)); //initialize the listview with the first selection since it's default.
+        loadSelectableDonuts(list.get(0)); //initialize the listview with the first selection since it's default.
 
-        //initialize the combobox which selects the number of donuts.
         countCombobox.setItems(countList);
         countCombobox.getSelectionModel().selectFirst();
-
-        subtotalField.setText("$0.00");
-
+        setSubTotalLabel();
     }
 
     //will initialize the selectable listview depending on the donut type.
-    public void loadselectableDonuts(String donutChosen){
+    public void loadSelectableDonuts(String donutChosen){
 
         //remove all items from the listview, then from the list
         selectableDonuts.getItems().removeAll(flavorList);
@@ -82,17 +89,17 @@ public class OrderingDonutsController implements Initializable {
 
         else if(donutChosen.equals("Donut Hole")) {
             //add the flavor available to that type.
-            flavorList.add("Jelly Hole");
-            flavorList.add("Cinnamon Sugar Hole");
-            flavorList.add("Glazed Hole");
+            flavorList.add("Jelly Holes");
+            flavorList.add("Cinnamon Sugar Holes");
+            flavorList.add("Glazed Holes");
             //add the items on the list to the listview.
             selectableDonuts.getItems().addAll(flavorList);
         }
     }
 
     public void displaySelectedDonuts() {
-        selectedDonuts.getItems().removeAll(namesofSelection);
-        namesofSelection.removeAll(namesofSelection);
+        selectedDonuts.getItems().removeAll(namesOfSelection);
+        namesOfSelection.removeAll(namesOfSelection);
         //if there are no donuts selected, leave the list view empty.
         if(selectedDonutList.size() == 0) {
             return;
@@ -100,24 +107,20 @@ public class OrderingDonutsController implements Initializable {
 
         //Traverse through the list of selected donuts and each.
         for(int i = 0; i < selectedDonutList.size(); i++) {
-            namesofSelection.add(selectedDonutList.get(i).getFlavor() + "(" + selectedDonutList.get(i).getItemQuantity() + ")");
+            namesOfSelection.add(selectedDonutList.get(i).getFlavor() + "(" + selectedDonutList.get(i).getItemQuantity() + ")");
 
         }
-        selectedDonuts.getItems().addAll(namesofSelection);
+        selectedDonuts.getItems().addAll(namesOfSelection);
     }
 
     //Once a donut type is chosen
     public void handleDonutSelection(ActionEvent actionEvent) {
         String donutChosen = combobox.getValue().toString();
-        loadselectableDonuts(donutChosen);
+        loadSelectableDonuts(donutChosen);
     }
 
-    @FXML
-    ArrayList<Donut> selectedDonutList = new ArrayList<>();
-    ObservableList<String> namesofSelection = FXCollections.observableArrayList();
-    BigDecimal subtotal = new BigDecimal("0");
-
-    //add a donut of the selected type, selected flavor, and selected quantity. As of now it does not check if that type of donut of the same flavor already exists.
+    //add a donut of the selected type, selected flavor, and selected quantity. RESOLVED: As of now it does not check
+    // if that type of donut of the same flavor already exists.
     public void handleDonutAddition(ActionEvent actionEvent) {
 
         //make sure a listview item has been chosen.
@@ -128,19 +131,24 @@ public class OrderingDonutsController implements Initializable {
         }
 
         //create donut with selected type and count
-        Donut crntDonut = new Donut(combobox.getSelectionModel().getSelectedItem().toString(), Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()), selectableDonuts.getSelectionModel().getSelectedItem().toString());
+        Donut crntDonut = new Donut(combobox.getSelectionModel().getSelectedItem().toString(), Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()));
+        crntDonut.add(selectableDonuts.getSelectionModel().getSelectedItem().toString());
+        //System.out.println(combobox.getSelectionModel().getSelectedItem().toString() + " : " + Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()) + " : " + selectableDonuts.getSelectionModel().getSelectedItem().toString());
+        //System.out.println(crntDonut.getItemPrice());
+
+        //Check if donut already exists, if so display error message
+        if(isDuplicateDonut(crntDonut)) {
+            noSelectionWarning1.setText("This flavored donut is already selected.");
+            return;
+        }
 
         //add the donut order to the list of selected donuts
         selectedDonutList.add(crntDonut);
+        setSubTotalLabel();
 
         //Display the selectedDonutsCombobox
         displaySelectedDonuts();
         noSelectionWarning1.setText("");
-
-        //update the price subtotal
-        BigDecimal newSubtotal = subtotal.add(new BigDecimal(String.valueOf(crntDonut.itemPrice()))); //immutable so much create new
-        subtotal = newSubtotal;
-        subtotalField.setText("$" + newSubtotal);
     }
 
     //Remove one of the selected donuts.
@@ -152,14 +160,57 @@ public class OrderingDonutsController implements Initializable {
             return;
         }
 
+
         //Get the donut that is being removed.
         int donutIndex = Integer.parseInt(selectedDonuts.getSelectionModel().getSelectedIndices().toString().substring(1,2));
-        //before removing the donut subtrack its price from the subtotal.
-        BigDecimal newSubtotal = subtotal.subtract(new BigDecimal(String.valueOf(selectedDonutList.get(donutIndex).getItemPrice())));
-        subtotal = newSubtotal;
         selectedDonutList.remove(donutIndex); //remove the donut
+        setSubTotalLabel();
         displaySelectedDonuts(); //update the listview
         noSelectionWarning1.setText("");
-        subtotalField.setText("$" + newSubtotal);
     }
+
+    //Check if donut already exists in the list, if so return true
+    private boolean isDuplicateDonut(Donut donut){
+        for (Donut addedDonut : selectedDonutList){
+            if(addedDonut.getFlavor().equals(donut.getFlavor())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void setSubTotalLabel(){
+        subTotalLabel.setText("$" + String.format("%.2f", calculateSubTotal()));
+    }
+
+    private double calculateSubTotal(){
+        double sum = 0;
+        if(!selectedDonutList.isEmpty()){
+            for (Donut donut : selectedDonutList){
+                sum += donut.getDonutPrice();
+            }
+        }
+        return sum;
+    }
+
+    //------------------------Establish connection with MainMenu------------------------
+    private final ReadOnlyObjectWrapper<ArrayList<Donut>> selectedThing = new ReadOnlyObjectWrapper<>();
+
+    public ReadOnlyObjectProperty<ArrayList<Donut>> selectedThingProperty() {
+        return selectedThing.getReadOnlyProperty() ;
+    }
+
+    public ArrayList<Donut> getDonutList(){
+        return selectedDonutList;
+    }
+
+    public void handleAddToOrder(ActionEvent actionEvent) throws IOException {
+        selectedThing.set(selectedDonutList);
+
+        //Code to close the screen once order is placed
+        Stage stage = (Stage) addOrder.getScene().getWindow();
+        stage.close();
+
+    }
+
 }
