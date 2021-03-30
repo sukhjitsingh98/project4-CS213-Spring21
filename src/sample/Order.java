@@ -69,6 +69,10 @@ public class Order implements Customizable{
         return items;
     }
 
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
 //    //test
 //    public static void main(String[] args) {
 //        Donut yeastDonut = new Donut("Yeast Donut",1);
