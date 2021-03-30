@@ -22,7 +22,7 @@ import javax.swing.*;
 public class OrderingCoffeeController implements Initializable {
 
     @FXML
-    TextField subTotalTextField;
+    Label subTotalLabel;
 
     @FXML
     Button addToOrderButton;
@@ -52,73 +52,73 @@ public class OrderingCoffeeController implements Initializable {
         //since the default is tall and count is 1, update the price to default once implemented.
         coffee.setCoffeeType(sizeCombobox.getSelectionModel().getSelectedItem().toString());
         coffee.setCoffeeQuantity(Integer.parseInt((String) countCombobox.getSelectionModel().getSelectedItem()));
-        setSubTotalTextField();
+        setSubTotalLabel();
 
     }
 
     //on selection update the price
     public void handleSizeSelection(ActionEvent actionEvent) {
         coffee.setCoffeeType(sizeCombobox.getSelectionModel().getSelectedItem().toString());
-        setSubTotalTextField();
+        setSubTotalLabel();
     }
 
     public void handleCountSelection(ActionEvent actionEvent) {
         coffee.setCoffeeQuantity(Integer.parseInt((String) countCombobox.getSelectionModel().getSelectedItem()));
-        setSubTotalTextField();
+        setSubTotalLabel();
     }
 
     public void handleCreamCheckBoxSelection(ActionEvent actionEvent){
         if(creamCheckBox.isSelected()){
             coffee.add("cream");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
         else if(!creamCheckBox.isSelected()){
             coffee.remove("cream");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
     }
 
     public void handleSyrupCheckBoxSelection(ActionEvent actionEvent){
         if(syrupCheckBox.isSelected()){
             coffee.add("syrup");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
         else if(!syrupCheckBox.isSelected()){
             coffee.remove("syrup");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
     }
 
     public void handleMilkCheckBoxSelection(ActionEvent actionEvent){
         if(milkCheckBox.isSelected()){
             coffee.add("milk");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
         else if(!milkCheckBox.isSelected()){
             coffee.remove("milk");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
     }
 
     public void handleCaramelCheckBoxSelection(ActionEvent actionEvent){
         if(caramelCheckBox.isSelected()){
             coffee.add("caramel");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
         else if(!caramelCheckBox.isSelected()){
             coffee.remove("caramel");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
     }
 
     public void handleWhippedCreamCheckBoxSelection(ActionEvent actionEvent){
         if(whippedCreamCheckBox.isSelected()){
             coffee.add("whipped cream");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
         else if(!whippedCreamCheckBox.isSelected()){
             coffee.remove("whipped cream");
-            setSubTotalTextField();
+            setSubTotalLabel();
         }
     }
 
@@ -141,8 +141,8 @@ public class OrderingCoffeeController implements Initializable {
 
     }
 
-    private void setSubTotalTextField(){
-        subTotalTextField.setText(String.format("%.2f", coffee.getCoffeePrice()));
+    private void setSubTotalLabel(){
+        subTotalLabel.setText("$" + String.format("%.2f", coffee.getCoffeePrice()));
     }
 
 }

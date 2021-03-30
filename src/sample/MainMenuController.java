@@ -30,7 +30,7 @@ public class MainMenuController {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Order Coffee");
-        window.setScene(new Scene(root, 600, 475));
+        window.setScene(new Scene(root, 399 , 213));
         window.showAndWait();
     }
 
@@ -41,7 +41,11 @@ public class MainMenuController {
         Parent root = loader.load();
 
         OrderingDonutsController donutsController = loader.getController();
-
+        donutsController.selectedThingProperty().addListener((observableValue, selectedDonutList, t1) -> {
+            for (Donut donut : donutsController.getDonutList()){
+                currentOrder.add(donut);
+            }
+        });
 
 
         Stage window = new Stage();
@@ -72,11 +76,7 @@ public class MainMenuController {
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Current Order Detail");
         window.setScene(new Scene(root, 455, 400));
-        window.show();
-    }
-
-    public void addOrderToStore(Object obj){
-        storeOrders.add(obj);
+        window.showAndWait();
     }
 
 }

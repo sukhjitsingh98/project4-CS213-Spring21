@@ -1,20 +1,15 @@
 package sample;
 
-import java.util.ArrayList;
-
-//This class is not listed in the project description but might be needed since its use is mentioned
 public class Donut extends MenuItem implements Customizable{
 
     private String donutType;
-    private ArrayList<String> flavors = new ArrayList<String>();
     private String flavor;
 
-    public Donut(String donutType, int donutQuantity, String flavor){
+    public Donut(String donutType, int donutQuantity){
         super(donutQuantity);
         this.donutType = donutType;
         super.setItemPrice(itemPrice());
-        this.flavor = flavor;
-
+        super.setItemString(donutDataString());
     }
 
     //Add flavors
@@ -24,8 +19,9 @@ public class Donut extends MenuItem implements Customizable{
             String flavor = (String) obj;
 
             //Check if the add in is valid
-            if(isValidFlavor(flavor) && ! flavors.contains(flavor)){
-                flavors.add(flavor);
+            if(isValidFlavor(flavor)){
+                this.flavor = flavor;
+                super.setItemString(donutDataString());
                 return true;
             }
         }
@@ -39,34 +35,26 @@ public class Donut extends MenuItem implements Customizable{
             String flavor = (String) obj;
 
             //Check if the add in is valid
-            if(isValidFlavor(flavor) && flavors.contains(flavor)){
-                flavors.remove(flavor);
+            if(isValidFlavor(flavor) && !flavor.equals("")){
+                this.flavor = "";
+                super.setItemString(donutDataString());
                 return true;
             }
         }
         return false;
     }
 
-    //Maybe calculate with Tax?
     public double itemPrice(){
         if(donutType.equals("Yeast Donut")){
-            return Constants.YEAST_DONUT_PRICE;
+            return Constants.YEAST_DONUT_PRICE * super.getItemQuantity();
         }
         else if(donutType.equals("Cake Donut")){
-            return Constants.CAKE_DONUT_PRICE;
+            return Constants.CAKE_DONUT_PRICE * super.getItemQuantity();
         }
         else if(donutType.equals("Donut Hole")){
-            return Constants.DONUT_HOLE_PRICE;
+            return Constants.DONUT_HOLE_PRICE * super.getItemQuantity();
         }
         return 0;
-    }
-
-    public double getDonutPrice(){
-        return super.getItemPrice();
-    }
-
-    public void setDonutQuanitity(int donutQuantity){
-        super.setItemQuantity(donutQuantity);
     }
 
     private boolean isValidFlavor(String flavor) {
@@ -88,13 +76,19 @@ public class Donut extends MenuItem implements Customizable{
         return false;
     }
 
-    public void setDonutQuantity(int donutQuantity){
-        super.setItemQuantity(donutQuantity);
-        super.setItemPrice(itemPrice());
-    }
-
     public String getFlavor(){
         return flavor;
     }
+
+    public double getDonutPrice() {
+        return super.getItemPrice();
+    }
+
+    public String donutDataString(){
+        String donutData = flavor + " " + donutType + ", Quantity: " + super.getItemQuantity();
+        return donutData;
+    }
+
+
 
 }
