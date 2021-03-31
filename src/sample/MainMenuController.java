@@ -79,13 +79,12 @@ public class MainMenuController {
         window.showAndWait();
     }
 
-
     public void handleStoreOrders(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrdersPage.fxml"));
         Parent root = loader.load();
 
-        StoreOrdersPageController storeOrdersPageController = loader.getController();
-        storeOrdersPageController.receiveMainMenuCurrentOrder(storeOrders);
+        StoreOrdersPageController storeOrdersController = loader.getController();
+        storeOrdersController.receiveMainMenuCurrentOrder(storeOrders);
 
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
@@ -93,4 +92,5 @@ public class MainMenuController {
         window.setScene(new Scene(root, 455, 400));
         window.showAndWait();
     }
+
 }

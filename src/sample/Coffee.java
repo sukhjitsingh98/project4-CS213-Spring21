@@ -11,9 +11,6 @@ public class Coffee extends MenuItem implements Customizable{
         super(coffeeQuantity);
         this.coffeeType = coffeeType;
         super.setItemPrice(itemPrice());
-
-        //Keeping the string in the super class will make this program more generic and will reduce the need to use
-        // type casting when extracting the strings.
         super.setItemString(coffeeDataString());
     }
 
@@ -106,8 +103,11 @@ public class Coffee extends MenuItem implements Customizable{
     private String addInsToString(){
         StringBuilder stringBuilder = new StringBuilder();
         for (String s : addInsList) {
+            //Only add commas if there is more than one add in
+            if(addInsList.size() > 1 && !s.equals(addInsList.get(0))){
+                stringBuilder.append(", ");
+            }
             stringBuilder.append(s);
-            stringBuilder.append(",");
         }
         return stringBuilder.toString();
     }
