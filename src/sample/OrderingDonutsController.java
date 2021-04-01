@@ -4,7 +4,7 @@ package sample;
  The OrderingDonutsController class defines the methods associated with the OrderingDonuts.fxml GUI file.
  The public methods define the actions performed when buttons and combobox items are clicked in the GUI application.
  The private methods are helper methods to aid in the functionality of the button and combobox methods.
- An is Donut Class arraylist is created and the methods interact with this arraylist to add, remove, or
+ A Donut Class arraylist is created and the methods interact with this arraylist to add, remove, or
  manipulate the Donut data given by the user in the GUI application.
 
  @author German Munguia, Sukhjit Singh
@@ -64,7 +64,7 @@ public class OrderingDonutsController implements Initializable {
     private final ReadOnlyObjectWrapper<ArrayList<Donut>> selectedThing = new ReadOnlyObjectWrapper<>();
 
     /**
-     This method is run when the GUI firs opens up and populates the combobox with the different Donut types which
+     This method is run when the GUI first opens up and populates the combobox with the different Donut types which
      can be selected and populates the quantity combobox with the available Donut quantities which can be selected.
      @param location used to resolve relative path attribute values.
      @param resources used to resolve resource key attribute values.

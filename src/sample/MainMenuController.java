@@ -1,5 +1,14 @@
 package sample;
 
+/**
+ The MainMenuController class defines the methods associated with the MainMenu.fxml GUI file.
+ The public methods define the actions performed when buttons are clicked in the GUI application.
+ An currentOrders and storeOrders arraylists are created and the methods interact with this arraylist to add, remove, or
+ manipulate the Order and StoreOrders data given by the user in the GUI application.
+
+ @author German Munguia, Sukhjit Singh
+ */
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,12 +21,21 @@ import java.io.IOException;
 public class MainMenuController {
 
     int orderNumber = Constants.FIRST_ORDER;
+
+    //StoreOrders object which will hold all orders made by user
     StoreOrders storeOrders = new StoreOrders();
+
+    //Order object which will hold the current order being made by the user
     Order currentOrder = new Order(orderNumber);
 
-    //Create popup window for ordering coffee
+    /**
+     Loads the OrderingCoffee.fxml file and generates a GUI scene by running the associated code.
+     The initial GUI application size is 399 pixels wide and 213 pixels long.
+     A listener is applied to the OrderingDonutController object to obtain the Coffee Class Object from the child
+     GUI and update the currentOrders arraylist in this Class.
+     @param actionEvent associated with the clicking of the Order Coffee button
+     */
     public void handleCoffeeOrder(ActionEvent actionEvent) throws IOException {
-        //Parent root = FXMLLoader.load(getClass().getResource("OrderingCoffee.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("OrderingCoffee.fxml"));
         Parent root = loader.load();
 
@@ -34,9 +52,14 @@ public class MainMenuController {
         window.showAndWait();
     }
 
-    //Popup for ordering donuts
+    /**
+     Loads the OrderingDonuts.fxml file and generates a GUI scene by running the associated code.
+     The initial GUI application size is 600 pixels wide and 475 pixels long.
+     A listener is applied to the OrderingDonutsController object to obtain the Donut arraylist from the child
+     GUI and update the currentOrders arraylist in this Class.
+     @param actionEvent associated with the clicking of the Order Donut button
+     */
     public void handleDonutOrder(ActionEvent actionEvent) throws IOException {
-        //Parent root = FXMLLoader.load(getClass().getResource("OrderingDonuts.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("OrderingDonuts.fxml"));
         Parent root = loader.load();
 
@@ -47,7 +70,6 @@ public class MainMenuController {
             }
         });
 
-
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Order Donut");
@@ -55,7 +77,14 @@ public class MainMenuController {
         window.showAndWait();
     }
 
-    //Popup for current order
+    /**
+     Loads the CurrentOrderDetail.fxml file and generates a GUI scene by running the associated code.
+     The initial GUI application size is 455 pixels wide and 400 pixels long.
+     A listener is applied to the CurrentOrderDetailController object to obtain the Order Class Object from the child
+     GUI and update the storeOrders arraylist in this Class.
+     A new Order object is generated after the current order is placed by the user.
+     @param actionEvent associated with the clicking of the View/Edit Current Order button
+     */
     public void handleCurrentOrder(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderDetail.fxml"));
         Parent root = loader.load();
@@ -79,6 +108,11 @@ public class MainMenuController {
         window.showAndWait();
     }
 
+    /**
+     Loads the StoreOrdersPage.fxml file and generates a GUI scene by running the associated code.
+     The initial GUI application size is 455 pixels wide and 400 pixels long.
+     @param actionEvent associated with the clicking of the View/Edit All Store Orders button
+     */
     public void handleStoreOrders(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrdersPage.fxml"));
         Parent root = loader.load();
