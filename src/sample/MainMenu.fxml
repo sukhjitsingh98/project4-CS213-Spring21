@@ -44,7 +44,10 @@
                   </Button>
                   <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleCurrentOrder" prefHeight="127.0" prefWidth="168.0" text="View/Edit Current Order" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="97.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="96.0" fitWidth="100.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/shopping%20cart.jpg" />
+                           </image></ImageView>
                      </graphic>
                   </Button>
                   <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleStoreOrders" prefHeight="131.0" prefWidth="168.0" text="View/Edit All Store Orders" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
