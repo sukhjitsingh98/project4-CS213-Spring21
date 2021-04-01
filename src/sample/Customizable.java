@@ -1,7 +1,7 @@
 package sample;
 
 /**
- Interface class with add and remove methods.
+ Interface with add and remove methods.
  @author German Munguia, Sukhjit Singh
  */
 
