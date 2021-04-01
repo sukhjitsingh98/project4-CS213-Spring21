@@ -1,16 +1,5 @@
 package sample;
 
-/**
- The OrderingCoffeeController class defines the methods associated with the OrderingCoffee.fxml GUI file.
- The public methods define the actions performed when buttons, checkbox, and combobox items are clicked in the GUI
- application.
- The private methods are helper methods to aid in the functionality of the button, checkbox, and combobox methods.
- An Addins arraylist is created and the methods interact with this arraylist to add, remove, or
- manipulate the Coffee addin data given by the user in the GUI application.
-
- @author German Munguia, Sukhjit Singh
- */
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,7 +14,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+/**
+ The OrderingCoffeeController class defines the methods associated with the OrderingCoffee.fxml GUI file.
+ The public methods define the actions performed when buttons, checkbox, and combobox items are clicked in the GUI
+ application.
+ The private methods are helper methods to aid in the functionality of the button, checkbox, and combobox methods.
+ An Addins arraylist is created and the methods interact with this arraylist to add, remove, or
+ manipulate the Coffee addin data given by the user in the GUI application.
 
+ @author German Munguia, Sukhjit Singh
+ */
 public class OrderingCoffeeController implements Initializable {
 
     @FXML

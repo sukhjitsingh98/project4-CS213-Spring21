@@ -1,5 +1,9 @@
 package sample;
 
+
+
+import java.util.ArrayList;
+
 /**
  The Order class defines the abstract Order type which contains the array consisting of MenuItem class objects.
  Contains constructors to generate Order objects.
@@ -8,8 +12,6 @@ package sample;
 
  @author German Munguia, Sukhjit Singh
  */
-
-import java.util.ArrayList;
 
 public class Order implements Customizable{
     private int orderNumber;

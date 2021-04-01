@@ -1,14 +1,5 @@
 package sample;
 
-/**
- The MainMenuController class defines the methods associated with the MainMenu.fxml GUI file.
- The public methods define the actions performed when buttons are clicked in the GUI application.
- An currentOrders and storeOrders arraylists are created and the methods interact with this arraylist to add, remove, or
- manipulate the Order and StoreOrders data given by the user in the GUI application.
-
- @author German Munguia, Sukhjit Singh
- */
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +11,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ The MainMenuController class defines the methods associated with the MainMenu.fxml GUI file.
+ The public methods define the actions performed when buttons are clicked in the GUI application.
+ An currentOrders and storeOrders arraylists are created and the methods interact with this arraylist to add, remove, or
+ manipulate the Order and StoreOrders data given by the user in the GUI application.
+
+ @author German Munguia, Sukhjit Singh
+ */
 public class MainMenuController {
 
     @FXML

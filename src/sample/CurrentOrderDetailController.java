@@ -1,15 +1,5 @@
 package sample;
 
-/**
- The CurrentOrderDetailController class defines the methods associated with the CurrentOrderDetail.fxml GUI file.
- The public methods define the actions performed when buttons are clicked in the GUI application.
- The private methods are helper methods to aid in the functionality of the button methods.
- An Order Object is passed into this class and the methods interact with this object to add, remove, or
- manipulate the order data given by the user in the GUI application.
-
- @author German Munguia, Sukhjit Singh
- */
-
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
@@ -24,6 +14,15 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ The CurrentOrderDetailController class defines the methods associated with the CurrentOrderDetail.fxml GUI file.
+ The public methods define the actions performed when buttons are clicked in the GUI application.
+ The private methods are helper methods to aid in the functionality of the button methods.
+ An Order Object is passed into this class and the methods interact with this object to add, remove, or
+ manipulate the order data given by the user in the GUI application.
+
+ @author German Munguia, Sukhjit Singh
+ */
 public class CurrentOrderDetailController{
 
     @FXML

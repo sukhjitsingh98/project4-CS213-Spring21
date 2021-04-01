@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.ArrayList;
+
 /**
  The Order class defines the abstract StoreOrders type which contains the array consisting of Order class objects.
  Contains constructors to generate StoreOrders objects.
@@ -8,9 +10,6 @@ package sample;
 
  @author German Munguia, Sukhjit Singh
  */
-
-import java.util.ArrayList;
-
 public class StoreOrders implements Customizable{
 
     private ArrayList<Order> orders = new ArrayList<>();
@@ -58,6 +57,7 @@ public class StoreOrders implements Customizable{
     /**
      Getter method which returns an individual Order from the orders arraylist.
      @return orders.get(i) an individual order from the orders arraylist
+     @param i the order number that is asked for.
      */
     public Order getOrder(int i){
         return orders.get(i);

@@ -1,15 +1,5 @@
 package sample;
 
-/**
- The StoreOrdersPageController class defines the methods associated with the StoreOrdersPage.fxml GUI file.
- The public methods define the actions performed when buttons and combo boxes are clicked in the GUI application.
- The private methods are helper methods to aid in the functionality of the button and combo box methods.
- A StoreOrders Object is passed into this class and the methods interact with this object to add, remove, or
- manipulate store order data given by the user in the GUI application.
-
- @author German Munguia, Sukhjit Singh
- */
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +12,16 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+/**
+ The StoreOrdersPageController class defines the methods associated with the StoreOrdersPage.fxml GUI file.
+ The public methods define the actions performed when buttons and combo boxes are clicked in the GUI application.
+ The private methods are helper methods to aid in the functionality of the button and combo box methods.
+ A StoreOrders Object is passed into this class and the methods interact with this object to add, remove, or
+ manipulate store order data given by the user in the GUI application.
+
+ @author German Munguia, Sukhjit Singh
+ */
 
 public class StoreOrdersPageController {
 

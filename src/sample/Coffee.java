@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.ArrayList;
+
 /**
  The Coffee class defines the abstract Coffee type.
  Contains constructors to generate Coffee objects using the parameter data.
@@ -8,8 +10,6 @@ package sample;
 
  @author German Munguia, Sukhjit Singh
  */
-
-import java.util.ArrayList;
 
 public class Coffee extends MenuItem implements Customizable{
 

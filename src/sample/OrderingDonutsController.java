@@ -1,15 +1,5 @@
 package sample;
 
-/**
- The OrderingDonutsController class defines the methods associated with the OrderingDonuts.fxml GUI file.
- The public methods define the actions performed when buttons and combobox items are clicked in the GUI application.
- The private methods are helper methods to aid in the functionality of the button and combobox methods.
- A Donut Class arraylist is created and the methods interact with this arraylist to add, remove, or
- manipulate the Donut data given by the user in the GUI application.
-
- @author German Munguia, Sukhjit Singh
- */
-
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -28,7 +18,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-//Controller class for OrderingDonuts.fxml
+/**
+ The OrderingDonutsController class defines the methods associated with the OrderingDonuts.fxml GUI file.
+ The public methods define the actions performed when buttons and combobox items are clicked in the GUI application.
+ The private methods are helper methods to aid in the functionality of the button and combobox methods.
+ A Donut Class arraylist is created and the methods interact with this arraylist to add, remove, or
+ manipulate the Donut data given by the user in the GUI application.
+
+ @author German Munguia, Sukhjit Singh
+ */
 public class OrderingDonutsController implements Initializable {
 
     //Create combobox and create a list with its values to the three donut choices to be initialized.
@@ -84,6 +82,7 @@ public class OrderingDonutsController implements Initializable {
     /**
      Helper method which populates the first listview with the donut flavors which can be selected by the user based
      on the type of donut they selected from the combobox.
+     @param donutChosen the donut that was selected from the listview.
      */
     private void loadSelectableDonuts(String donutChosen){
 

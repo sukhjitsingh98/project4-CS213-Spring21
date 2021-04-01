@@ -1,10 +1,6 @@
 package sample;
 
-/**
- The main class loads and runs the MainMenu FXML file and MainMenuController class code.
- The JavaFX library is loaded and is used to load and run the GUI application associated with the MainMenu.FXML file.
- @author German Munguia, Sukhjit Singh
- */
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ The main class loads and runs the MainMenu FXML file and MainMenuController class code.
+ The JavaFX library is loaded and is used to load and run the GUI application associated with the MainMenu.FXML file.
+ @author German Munguia, Sukhjit Singh
+ */
 public class Main extends Application {
 
     /**
