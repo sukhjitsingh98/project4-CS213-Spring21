@@ -42,7 +42,6 @@ public class MainMenuController {
         OrderingCoffeeController coffeeController = loader.getController();
         coffeeController.selectedThingProperty().addListener((observableValue, coffee, t1) -> {
             currentOrder.add(coffeeController.getCoffee());
-            System.out.println(currentOrder.getItems().get(0).getItemPrice()); //For debugging
         });
 
         Stage window = new Stage();
