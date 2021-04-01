@@ -10,15 +10,20 @@ package sample;
  */
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainMenuController {
+
+    @FXML
+    Label messageLabel;
 
     int orderNumber = Constants.FIRST_ORDER;
 
@@ -36,12 +41,15 @@ public class MainMenuController {
      @param actionEvent associated with the clicking of the Order Coffee button
      */
     public void handleCoffeeOrder(ActionEvent actionEvent) throws IOException {
+        messageLabel.setText("");
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("OrderingCoffee.fxml"));
         Parent root = loader.load();
 
         OrderingCoffeeController coffeeController = loader.getController();
         coffeeController.selectedThingProperty().addListener((observableValue, coffee, t1) -> {
             currentOrder.add(coffeeController.getCoffee());
+            messageLabel.setText("Coffee Successfully Added to Order");
         });
 
         Stage window = new Stage();
@@ -59,6 +67,8 @@ public class MainMenuController {
      @param actionEvent associated with the clicking of the Order Donut button
      */
     public void handleDonutOrder(ActionEvent actionEvent) throws IOException {
+        messageLabel.setText("");
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("OrderingDonuts.fxml"));
         Parent root = loader.load();
 
@@ -66,6 +76,7 @@ public class MainMenuController {
         donutsController.selectedThingProperty().addListener((observableValue, selectedDonutList, t1) -> {
             for (Donut donut : donutsController.getDonutList()){
                 currentOrder.add(donut);
+                messageLabel.setText("Donut(s) Successfully Added to Order");
             }
         });
 
@@ -85,6 +96,8 @@ public class MainMenuController {
      @param actionEvent associated with the clicking of the View/Edit Current Order button
      */
     public void handleCurrentOrder(ActionEvent actionEvent) throws IOException {
+        messageLabel.setText("");
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CurrentOrderDetail.fxml"));
         Parent root = loader.load();
 
@@ -95,6 +108,7 @@ public class MainMenuController {
         currentOrderDetailController.selectedThingProperty().addListener((observableValue, currentOrder, t1) -> {
             //Order is complete and can be added to store orders list
             storeOrders.add(currentOrderDetailController.getCurrentOrder());
+            messageLabel.setText("Order Successfully Placed");
             orderNumber++;
             //Create a new store order with incremented order number
             this.currentOrder = new Order(orderNumber);
@@ -113,6 +127,8 @@ public class MainMenuController {
      @param actionEvent associated with the clicking of the View/Edit All Store Orders button
      */
     public void handleStoreOrders(ActionEvent actionEvent) throws IOException {
+        messageLabel.setText("");
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrdersPage.fxml"));
         Parent root = loader.load();
 

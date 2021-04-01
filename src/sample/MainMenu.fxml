@@ -13,7 +13,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="332.0" prefWidth="390.0">
+      <AnchorPane prefHeight="340.0" prefWidth="390.0">
          <children>
             <GridPane layoutX="14.0" layoutY="89.0" prefHeight="285.0" prefWidth="390.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columnConstraints>
@@ -50,18 +50,22 @@
                            </image></ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleStoreOrders" prefHeight="131.0" prefWidth="168.0" text="View/Edit All Store Orders" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleStoreOrders" prefHeight="129.0" prefWidth="168.0" text="View/Edit All Store Orders" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <graphic>
-                        <ImageView fitHeight="98.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="101.0" fitWidth="109.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/multiple%20order%20icon%20image.png" />
+                           </image></ImageView>
                      </graphic>
                   </Button>
                </children>
             </GridPane>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="12.0" prefHeight="35.0" prefWidth="363.0" text="RU Café Dashboard" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="-1.0" prefHeight="35.0" prefWidth="243.0" text="RU Café Dashboard" textAlignment="CENTER">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
+            <Label fx:id="messageLabel" alignment="CENTER" layoutX="46.0" layoutY="33.0" prefHeight="17.0" prefWidth="298.0" />
          </children>
       </AnchorPane>
    </children>
