@@ -1,5 +1,15 @@
 package sample;
 
+/**
+ The OrderingDonutsController class defines the methods associated with the OrderingDonuts.fxml GUI file.
+ The public methods define the actions performed when buttons and combobox items are clicked in the GUI application.
+ The private methods are helper methods to aid in the functionality of the button and combobox methods.
+ An is Donut Class arraylist is created and the methods interact with this arraylist to add, remove, or
+ manipulate the Donut data given by the user in the GUI application.
+
+ @author German Munguia, Sukhjit Singh
+ */
+
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -50,6 +60,15 @@ public class OrderingDonutsController implements Initializable {
     ArrayList<Donut> selectedDonutList = new ArrayList<>();
     ObservableList<String> namesOfSelection = FXCollections.observableArrayList();
 
+    //Variable which will be watched by the MainMenuController to check for any changes made to the selectedDonutList arraylist
+    private final ReadOnlyObjectWrapper<ArrayList<Donut>> selectedThing = new ReadOnlyObjectWrapper<>();
+
+    /**
+     This method is run when the GUI firs opens up and populates the combobox with the different Donut types which
+     can be selected and populates the quantity combobox with the available Donut quantities which can be selected.
+     @param location used to resolve relative path attribute values.
+     @param resources used to resolve resource key attribute values.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //initialize combobox
@@ -62,8 +81,11 @@ public class OrderingDonutsController implements Initializable {
         setSubTotalLabel();
     }
 
-    //will initialize the selectable listview depending on the donut type.
-    public void loadSelectableDonuts(String donutChosen){
+    /**
+     Helper method which populates the first listview with the donut flavors which can be selected by the user based
+     on the type of donut they selected from the combobox.
+     */
+    private void loadSelectableDonuts(String donutChosen){
 
         //remove all items from the listview, then from the list
         selectableDonuts.getItems().removeAll(flavorList);
@@ -77,7 +99,6 @@ public class OrderingDonutsController implements Initializable {
             //add the items on the list to the listview.
             selectableDonuts.getItems().addAll(flavorList);
         }
-
         else if(donutChosen.equals("Cake Donut")) {
             //add the flavor available to that type.
             flavorList.add("Jelly");
@@ -86,7 +107,6 @@ public class OrderingDonutsController implements Initializable {
             //add the items on the list to the listview.
             selectableDonuts.getItems().addAll(flavorList);
         }
-
         else if(donutChosen.equals("Donut Hole")) {
             //add the flavor available to that type.
             flavorList.add("Jelly Holes");
@@ -97,7 +117,10 @@ public class OrderingDonutsController implements Initializable {
         }
     }
 
-    public void displaySelectedDonuts() {
+    /**
+     Helper method which populates the second listview with the donut flavors which were selected by the user.
+     */
+    private void displaySelectedDonuts() {
         selectedDonuts.getItems().removeAll(namesOfSelection);
         namesOfSelection.removeAll(namesOfSelection);
         //if there are no donuts selected, leave the list view empty.
@@ -108,33 +131,38 @@ public class OrderingDonutsController implements Initializable {
         //Traverse through the list of selected donuts and each.
         for(int i = 0; i < selectedDonutList.size(); i++) {
             namesOfSelection.add(selectedDonutList.get(i).getFlavor() + "(" + selectedDonutList.get(i).getItemQuantity() + ")");
-
         }
         selectedDonuts.getItems().addAll(namesOfSelection);
     }
 
-    //Once a donut type is chosen
+    /**
+     Checks which Donut type the user selected from the combobox and loads the flavors for that donut in the first
+     listview.
+     @param actionEvent associated with the clicking of a donut type in the combobox
+     */
     public void handleDonutSelection(ActionEvent actionEvent) {
         String donutChosen = combobox.getValue().toString();
         loadSelectableDonuts(donutChosen);
     }
 
-    //add a donut of the selected type, selected flavor, and selected quantity. RESOLVED: As of now it does not check
-    // if that type of donut of the same flavor already exists.
+    /**
+     Checks if there is any donut selected by the user in the listview of the GUI application, if so the
+     selection is added to the selectedDonutsList arraylist and the second listview is updated to reflect this change.
+     Once the item is added, the subtotal is updated and the second listview is repopulated with the updated donut data.
+     @param actionEvent associated with the clicking of the Add Order arrow button
+     */
     public void handleDonutAddition(ActionEvent actionEvent) {
 
-        //make sure a listview item has been chosen.
+        //Make sure a listview item has been chosen.
         if(selectableDonuts.getSelectionModel().getSelectedItem() == null) {
             noSelectionWarning1.setText("Must first choose a flavor to add the donut.");
             return;
 
         }
 
-        //create donut with selected type and count
+        //Create donut with selected type and count
         Donut crntDonut = new Donut(combobox.getSelectionModel().getSelectedItem().toString(), Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()));
         crntDonut.add(selectableDonuts.getSelectionModel().getSelectedItem().toString());
-        //System.out.println(combobox.getSelectionModel().getSelectedItem().toString() + " : " + Integer.parseInt(countCombobox.getSelectionModel().getSelectedItem().toString()) + " : " + selectableDonuts.getSelectionModel().getSelectedItem().toString());
-        //System.out.println(crntDonut.getItemPrice());
 
         //Check if donut already exists, if so display error message
         if(isDuplicateDonut(crntDonut)) {
@@ -142,16 +170,22 @@ public class OrderingDonutsController implements Initializable {
             return;
         }
 
-        //add the donut order to the list of selected donuts
+        //Add the donut order to the list of selected donuts
         selectedDonutList.add(crntDonut);
         setSubTotalLabel();
 
-        //Display the selectedDonutsCombobox
+        //Display the selectedDonuts listview
         displaySelectedDonuts();
         noSelectionWarning1.setText("");
     }
 
-    //Remove one of the selected donuts.
+    /**
+     Checks if there are any donut flavors selected by the user in the listview of the GUI application, if so the
+     selection is deleted from the selectedDonutsList arraylist.
+     Once the item is deleted, the subtotal is updated and the listview is repopulated with the remaining donut data, if
+     no donuts remains, the listview remains empty.
+     @param actionEvent associated with the clicking of the Remove Donut arrow button
+     */
     public void handleDonutRemoval(ActionEvent actionEvent) {
 
         //make sure a listview item has been chosen.
@@ -160,16 +194,20 @@ public class OrderingDonutsController implements Initializable {
             return;
         }
 
-
         //Get the donut that is being removed.
         int donutIndex = Integer.parseInt(selectedDonuts.getSelectionModel().getSelectedIndices().toString().substring(1,2));
+
         selectedDonutList.remove(donutIndex); //remove the donut
         setSubTotalLabel();
         displaySelectedDonuts(); //update the listview
         noSelectionWarning1.setText("");
     }
 
-    //Check if donut already exists in the list, if so return true
+    /**
+     Helper method which returns a Boolean value representing if an individual donut is a duplicate.
+     @param donut object whose flavor will be checked for duplicate value
+     @return true is Donut flavor is already in the selectedDonutList, false otherwise
+     */
     private boolean isDuplicateDonut(Donut donut){
         for (Donut addedDonut : selectedDonutList){
             if(addedDonut.getFlavor().equals(donut.getFlavor())){
@@ -179,10 +217,17 @@ public class OrderingDonutsController implements Initializable {
         return false;
     }
 
+    /**
+     Helper method which updates the price label with the calculated values for the donut order subtotal.
+     */
     private void setSubTotalLabel(){
         subTotalLabel.setText("$" + String.format("%.2f", calculateSubTotal()));
     }
 
+    /**
+     Helper method which calculates the subtotal price of the donuts by summing the individual donut prices.
+     @return sum of the individual donut prices of the order.
+     */
     private double calculateSubTotal(){
         double sum = 0;
         if(!selectedDonutList.isEmpty()){
@@ -193,17 +238,29 @@ public class OrderingDonutsController implements Initializable {
         return sum;
     }
 
-    //------------------------Establish connection with MainMenu------------------------
-    private final ReadOnlyObjectWrapper<ArrayList<Donut>> selectedThing = new ReadOnlyObjectWrapper<>();
-
+    /**
+     Helper method which gets the read only value of the selectedThing Donut wrapper.
+     The MainMenuController will watch for any changes made to the wrapper and update the currentOrder in that class
+     based on the changes made in this class
+     @return wrapper object read only value
+     */
     public ReadOnlyObjectProperty<ArrayList<Donut>> selectedThingProperty() {
         return selectedThing.getReadOnlyProperty() ;
     }
 
+    /**
+     Getter method which returns the selectedDonutList arraylist
+     @return selectedDonutList which contains the Donut order data
+     */
     public ArrayList<Donut> getDonutList(){
         return selectedDonutList;
     }
 
+    /**
+     Updates the selectedThing Donut wrapper with the selectedDonutList arraylist and closes this GUI page.
+     This informs the MainMenuController that the selectedDonutList arraylist is ready to be retrieved
+     @param actionEvent associated with the clicking of the Add to Order button
+     */
     public void handleAddToOrder(ActionEvent actionEvent) throws IOException {
 
         if(selectedDonutList.isEmpty()) {

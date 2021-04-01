@@ -115,7 +115,7 @@ public class CurrentOrderDetailController{
     }
 
     /**
-     Helper method which calculates the subtotal price of the order by summing the individual menu item prices..
+     Helper method which calculates the subtotal price of the order by summing the individual menu item prices.
      @return sum of the individual item prices of the order.
      */
     private double calculateSubTotal(){
