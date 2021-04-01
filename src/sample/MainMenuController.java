@@ -84,7 +84,7 @@ public class MainMenuController {
         Parent root = loader.load();
 
         StoreOrdersPageController storeOrdersController = loader.getController();
-        storeOrdersController.receiveMainMenuCurrentOrder(storeOrders);
+        storeOrdersController.receiveMainMenuStoreOrder(storeOrders);
 
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

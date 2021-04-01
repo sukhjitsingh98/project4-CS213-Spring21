@@ -39,6 +39,7 @@ public class OrderingCoffeeController implements Initializable {
     ObservableList<String> countList = FXCollections.observableArrayList("1","2","3","4","5");
 
     Coffee coffee = new Coffee("", 0);
+    private final ReadOnlyObjectWrapper<Coffee> selectedThing = new ReadOnlyObjectWrapper<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -121,8 +122,6 @@ public class OrderingCoffeeController implements Initializable {
             setSubTotalLabel();
         }
     }
-
-    private final ReadOnlyObjectWrapper<Coffee> selectedThing = new ReadOnlyObjectWrapper<>();
 
     public ReadOnlyObjectProperty<Coffee> selectedThingProperty() {
         return selectedThing.getReadOnlyProperty() ;
