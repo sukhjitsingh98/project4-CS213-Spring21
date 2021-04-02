@@ -13,7 +13,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="340.0" prefWidth="390.0">
+      <AnchorPane prefHeight="340.0" prefWidth="390.0" style="-fx-background-color: linear-gradient(to top, #2c3e50, #3498db);">
          <children>
             <GridPane layoutX="14.0" layoutY="89.0" prefHeight="285.0" prefWidth="390.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columnConstraints>
@@ -25,7 +25,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="coffeeOrder" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleCoffeeOrder" prefHeight="114.0" prefWidth="168.0" text="Order Coffee" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button fx:id="coffeeOrder" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleCoffeeOrder" prefHeight="114.0" prefWidth="168.0" style="-fx-background-color: linear-gradient(to right, #7b4397, #dc2430);;" text="Order Coffee" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="104.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -34,7 +34,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="donutOrder" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="24.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleDonutOrder" prefHeight="114.0" prefWidth="168.0" text="Order Donuts" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="donutOrder" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="24.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleDonutOrder" prefHeight="114.0" prefWidth="168.0" style="-fx-background-color: linear-gradient(to right, #7b4397, #dc2430);;" text="Order Donuts" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="104.0" fitWidth="153.0" pickOnBounds="true">
                            <image>
@@ -42,7 +42,7 @@
                            </image></ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleCurrentOrder" prefHeight="127.0" prefWidth="168.0" text="View/Edit Current Order" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleCurrentOrder" prefHeight="127.0" prefWidth="168.0" style="-fx-background-color: linear-gradient(to right, #7b4397, #dc2430);;" text="View/Edit Current Order" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="96.0" fitWidth="100.0" pickOnBounds="true">
                            <image>
@@ -50,7 +50,7 @@
                            </image></ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleStoreOrders" prefHeight="129.0" prefWidth="168.0" text="View/Edit All Store Orders" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleStoreOrders" prefHeight="129.0" prefWidth="168.0" style="-fx-background-color: linear-gradient(to right, #7b4397, #dc2430);;" text="View/Edit All Store Orders" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="101.0" fitWidth="109.0" pickOnBounds="true">
                            <image>
@@ -60,12 +60,12 @@
                   </Button>
                </children>
             </GridPane>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="-1.0" prefHeight="35.0" prefWidth="243.0" text="RU Café Dashboard" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="-1.0" prefHeight="35.0" prefWidth="243.0" text="RU Café Dashboard" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="messageLabel" alignment="CENTER" layoutX="46.0" layoutY="33.0" prefHeight="17.0" prefWidth="298.0" />
+            <Label fx:id="messageLabel" alignment="CENTER" layoutX="46.0" layoutY="33.0" prefHeight="17.0" prefWidth="298.0" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

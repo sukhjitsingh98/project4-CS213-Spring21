@@ -4,15 +4,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StoreOrdersPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="455.0" style="-fx-background-color: linear-gradient(to bottom, #bbd2c5, #536976, #292e49);;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StoreOrdersPageController">
    <children>
-      <ListView fx:id="storeOrdersListview" layoutX="70.0" layoutY="175.0" prefHeight="202.0" prefWidth="300.0" />
-      <ComboBox fx:id="orderNumberCombobox" layoutX="70.0" layoutY="50.0" onAction="#handleOrderSelection" prefWidth="150.0" />
+      <ListView fx:id="storeOrdersListview" layoutX="70.0" layoutY="175.0" prefHeight="202.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(to bottom, #bbd2c5, #536976, #292e49);;" />
+      <ComboBox fx:id="orderNumberCombobox" layoutX="70.0" layoutY="50.0" onAction="#handleOrderSelection" prefWidth="150.0" style="-fx-background-color: linear-gradient(to right, #12c2e9, #c471ed);" />
       <VBox layoutX="347.0" layoutY="62.0" prefHeight="25.0" prefWidth="188.0" />
-      <Button fx:id="cancelOrder" layoutX="84.0" layoutY="109.0" mnemonicParsing="false" onAction="#handleCancelOrder" text="Cancel Order" />
-      <Button fx:id="exportOrder" layoutX="264.0" layoutY="109.0" mnemonicParsing="false" onAction="#handleExportOrder" text="Export Orders" />
-      <Text layoutX="273.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="total:" wrappingWidth="36.17578125" />
-      <Label fx:id="subtotalLabel" layoutX="309.0" layoutY="50.0" prefHeight="25.0" prefWidth="56.0" />
-      <Label fx:id="errorMessageLabel" layoutX="84.0" layoutY="152.0" prefHeight="17.0" prefWidth="270.0" />
+      <Button fx:id="cancelOrder" layoutX="84.0" layoutY="94.0" mnemonicParsing="false" onAction="#handleCancelOrder" prefHeight="40.0" prefWidth="105.0" style="-fx-background-color: linear-gradient(to right, #12c2e9, #c471ed);" text="Cancel Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="exportOrder" layoutX="249.0" layoutY="94.0" mnemonicParsing="false" onAction="#handleExportOrder" prefHeight="40.0" prefWidth="105.0" style="-fx-background-color: linear-gradient(to right, #12c2e9, #c471ed);" text="Export Orders" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Text fill="WHITE" layoutX="273.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="36.17578125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Label fx:id="subtotalLabel" layoutX="309.0" layoutY="50.0" prefHeight="25.0" prefWidth="56.0" textFill="WHITE" />
+      <Label fx:id="errorMessageLabel" layoutX="84.0" layoutY="152.0" prefHeight="17.0" prefWidth="270.0" textFill="#b50000" />
    </children>
 </AnchorPane>
